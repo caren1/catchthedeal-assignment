@@ -1,0 +1,43 @@
+[{
+        "id": 1,
+        "title": "Catch the deal!",
+        "price": 189,
+        "participants": 80,
+        "url": "https://fullstackopen.com/"
+    },
+    {
+        "id": 2,
+        "title": "Catch the deal!",
+        "price": 189,
+        "participants": 80,
+        "url": "https://fullstackopen.com/",
+        "promo": {
+            "discount": 20,
+            "code": "PROGONLY2020"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Catch the deal!",
+        "price": 189,
+        "participants": 80,
+        "url": "https://fullstackopen.com/",
+        "promo": {
+            "discount": 20,
+            "code": "PROGONLY2020",
+            "quantity": 50
+        }
+    },
+    {
+        "id": 4,
+        "title": "Catch the deal!",
+        "price": 189,
+        "participants": 80,
+        "url": "https://fullstackopen.com/",
+        "promo": {
+            "discount": 20,
+            "code": "PROGONLY2020",
+            "expires": "Jan 1, 2021 00:00:00"
+        }
+    }
+]
