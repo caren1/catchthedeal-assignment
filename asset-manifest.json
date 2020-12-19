@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/catchthedeal-assignment/static/css/main.ced0395d.chunk.css",
+    "main.js": "/catchthedeal-assignment/static/js/main.61cdf23b.chunk.js",
+    "main.js.map": "/catchthedeal-assignment/static/js/main.61cdf23b.chunk.js.map",
+    "runtime-main.js": "/catchthedeal-assignment/static/js/runtime-main.3d7ff785.js",
+    "runtime-main.js.map": "/catchthedeal-assignment/static/js/runtime-main.3d7ff785.js.map",
+    "static/js/2.62af6940.chunk.js": "/catchthedeal-assignment/static/js/2.62af6940.chunk.js",
+    "static/js/2.62af6940.chunk.js.map": "/catchthedeal-assignment/static/js/2.62af6940.chunk.js.map",
+    "index.html": "/catchthedeal-assignment/index.html",
+    "static/css/main.ced0395d.chunk.css.map": "/catchthedeal-assignment/static/css/main.ced0395d.chunk.css.map",
+    "static/js/2.62af6940.chunk.js.LICENSE.txt": "/catchthedeal-assignment/static/js/2.62af6940.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3d7ff785.js",
+    "static/js/2.62af6940.chunk.js",
+    "static/css/main.ced0395d.chunk.css",
+    "static/js/main.61cdf23b.chunk.js"
+  ]
+}
