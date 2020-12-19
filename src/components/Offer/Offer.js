@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+// styled-components
 import {
   OfferContainer,
   OfferHeading,
@@ -11,59 +13,30 @@ import {
   CodeLegend,
   CodeInput,
   OfferQuantityCounter,
-  CountDownContainer,
-  TimeSpan,
 } from "./Offer.elements";
+
+//components
 import IconWithInfo from "../IconWithInfo/IconWithInfo";
 import Button from "../Button/Button";
+import DateCounter from "../DateCounter/DateCounter";
+
+//icons
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
 const Offer = ({ offer }) => {
-  console.log(offer);
+  const [isFavourite, setFavourite] = useState(false);
 
-  const [hour, setHour] = useState("");
-  const [minutes, setMinutes] = useState("");
-  const [seconds, setSeconds] = useState("");
+  const onLikeHandler = () => {
+    setFavourite(!isFavourite);
+  };
 
-  let offerCounter = null;
-  if (offer.hasOwnProperty('expires')) {
-    let countDownDate = new Date(offer.promo.expires).getTime();
-    let countTheTime = setInterval(function () {
-      let now = new Date().getTime();
-      let distance = countDownDate - now;
-
-      let hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      setHour(hours);
-      setMinutes(minutes);
-      setSeconds(seconds);
-
-      if (distance < 0) {
-        clearInterval(countTheTime);
-        setHour("");
-        setMinutes("");
-        setSeconds("");
-      }
-    }, 1000);
-
-    offerCounter = (
-      <CountDownContainer>
-        <TimeSpan>{hour}</TimeSpan>:<TimeSpan>{minutes}</TimeSpan>:
-        <TimeSpan>{seconds}</TimeSpan>
-      </CountDownContainer>
-    );
-  }
-
-  const handleCodeCopy = () => {
-    const codeInput = document.getElementById("promocode");
+  const handleCodeCopy = (id) => {
+    const codeInput = document.getElementById(`promocode${id}`);
     codeInput.select();
     codeInput.setSelectionRange(0, 99999);
     document.execCommand("copy");
-    alert("Copied the code: " + codeInput.value);
+    alert(`ENJOY THE DISCOUNT : { { { ${codeInput.value} } } } `);
+    document.getElementById("offers").focus();
   };
 
   let offerPromo = null;
@@ -73,25 +46,29 @@ const Offer = ({ offer }) => {
         <OfferPromo>
           Get <OfferPromoSpan>{offer.promo.discount}%</OfferPromoSpan> discount
         </OfferPromo>
+
         <OfferCodeContainer>
           <CodeSpan>with this code</CodeSpan>
+
           <CodeFieldSet>
             <CodeLegend>click to copy</CodeLegend>
             <CodeInput
               type="text"
               value={offer.promo.code}
               placeholder={offer.promo.code}
-              id="promocode"
-              onClick={handleCodeCopy}
+              id={`promocode${offer.id}`}
+              onClick={() => handleCodeCopy(offer.id)}
               readOnly
             ></CodeInput>
           </CodeFieldSet>
+
           {offer.promo.quantity && (
             <OfferQuantityCounter>
               {offer.promo.quantity} codes left
             </OfferQuantityCounter>
           )}
-          {offerCounter}
+
+          {offer.promo.expires ? <DateCounter offer={offer} /> : null}
         </OfferCodeContainer>
       </>
     );
@@ -102,16 +79,25 @@ const Offer = ({ offer }) => {
       <IconWithInfo
         reverse={true}
         content={<FavoriteBorderIcon />}
+        isFavourite={isFavourite}
+        onLikeHandler={onLikeHandler}
         description={"Add to Follow"}
       />
       <OfferHeading>{offer.title}</OfferHeading>
       <OfferPrice>{offer.price} PLN</OfferPrice>
+
       {offerPromo}
+
       <IconWithInfo
+        isFavourite={isFavourite}
         content={<FavoriteBorderIcon />}
+        onLikeHandler={onLikeHandler}
         description={"Follow this course to get discount notifications!"}
       />
+
       <IconWithInfo
+        isFavourite={false}
+        isNumber={true}
         content={offer.participants}
         description={"Superheroes that have checked this course"}
       />

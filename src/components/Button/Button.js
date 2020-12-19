@@ -1,12 +1,12 @@
 import React from "react";
 import { OfferButton, ButtonSpan } from "./Button.elements";
-import Person from "@material-ui/icons/Person";
+import PersonIcon from "@material-ui/icons/Person";
 
 const Button = ({ address }) => {
   return (
-    <OfferButton href={address}>
+    <OfferButton href={ address }>
       <ButtonSpan> Go to the course</ButtonSpan>
-      <Person />
+      <PersonIcon />
     </OfferButton>
   );
 };

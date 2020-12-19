@@ -5,17 +5,30 @@ import {
   IconInfo,
 } from "./IconWithInfo.elements";
 
-const IconWithInfo = ({ content, description, reverse }) => {
-  let shouldBeReversed = false;
-  if (reverse) {
-    shouldBeReversed = true;
-  }
+const IconWithInfo = ({
+  content,
+  description,
+  reverse,
+  isFavourite,
+  isNumber,
+  onLikeHandler,
+}) => {
+  
+  let contentArray = description.split(" ");
+  let strongParagraph = contentArray.map((word, index) =>
+    index === 0 ? <strong key={word}>{word}</strong> : " " + word
+  );
 
-  // passing prop to styledcomps not working, check why
   return (
-    <IconWithInfoContainer reversed={shouldBeReversed}>
-      <IconWrapper>{content}</IconWrapper>
-      <IconInfo reversed={shouldBeReversed}>{description}</IconInfo>
+    <IconWithInfoContainer reversed={reverse}>
+      <IconWrapper
+        isNumber={isNumber}
+        isFavourite={isFavourite}
+        onClick={onLikeHandler}
+      >
+        {content}
+      </IconWrapper>
+      <IconInfo reversed={reverse}>{strongParagraph}</IconInfo>
     </IconWithInfoContainer>
   );
 };

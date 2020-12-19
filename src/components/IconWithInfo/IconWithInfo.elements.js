@@ -1,13 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
 const heartbeat = keyframes`
-  0%
-  {
-    transform: scale( .75 );
-  }
+  
   20%
   {
-    transform: scale( 1 );
+    transform: scale( 1.5 );
   }
   40%
   {
@@ -37,16 +34,20 @@ export const IconWithInfoContainer = styled.div`
 
 export const IconWrapper = styled.div`
   border: 1px solid #cfcbcb;
-  padding: 1em;
+  padding: 10px;
   border-radius: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
+  font-weight: bolder;
+  min-width: 45px;
+  min-height: 45px;
+  color: ${(props) => (props.isFavourite ? "red" : "black")};
 
   &:hover {
-    color: red;
-    animation: 1s ${heartbeat} ease-in;
+    color: ${(props) => (props.isNumber ? "#257fea" : "red")};
+    animation: 1s ${heartbeat} ease-in-out;
     cursor: pointer;
   }
 `;

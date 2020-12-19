@@ -4,7 +4,7 @@ import { OffersContainer } from "./Offers.elements";
 
 const Offers = ({ offers }) => {
   return (
-    <OffersContainer>
+    <OffersContainer id="offers">
       {offers.map((singleOffer) => (
         <Offer key={singleOffer.id} offer={singleOffer} />
       ))}
